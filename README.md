@@ -21,17 +21,19 @@ A list of technologies used within the project:
 
 ```bash
 # Clone this repo
-$ git clone <insira a url do seu repositório>
+$ git clone https://github.com/marianelaruiz/lakehouse-airflow
+# Enter the project folder
+$ cd lakehouse-airflow
 ```
 
 ### Windows
 
 ```bash
 # Create a virtual environment
-$ python -m venv venv
+$ python -m venv airflow_venv 
 
 # Activate your virtual environment
-$ venv\Scripts\activate
+$ airflow_venv\Scripts\activate 
 
 # Install requirements
 $ pip install -r requirements.txt
@@ -42,10 +44,10 @@ $ pip install -r requirements.txt
 
 ```bash
 # Create a virtual environment
-python3 -m venv venv # or virtualenv venv
+python3 -m venv airflow_venv # or virtualenv venv
 
 # Activate your virtual environment
-source venv/bin/activate
+source airflow_venv/bin/activate
 
 # Install requirements
 $ pip install -r requirements.txt

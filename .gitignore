@@ -1,6 +1,6 @@
 # ----------------------------------------
-# Python general
-__pycache__/
+# General Python
+__pycache__/Python general
 *.py[cod]
 *.pyo
 *.pyd
@@ -18,7 +18,7 @@ __pycache__/
 .vscode/
 
 # ----------------------------------------
-# Entornos virtuales
+# Virtual environments
 venv/
 .env/
 env/
@@ -41,13 +41,13 @@ spark-warehouse/
 metastore_db/
 .derby/
 
-# Carpetas de salida de datos
+# Data output folders
 lakehouse/bronze/
 lakehouse/silver/
 lakehouse/gold/
 
 # ----------------------------------------
-# Archivos de Parquet y temporales
+#  Parquet and temporary files
 *.parquet
 *.orc
 *.avro

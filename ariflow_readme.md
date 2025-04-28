@@ -18,7 +18,7 @@ airflow db init
 airflow users create     --username admin     --firstname marianela     --lastname ruiz     --email marianelaruiz.br@gmail.com     --role Admin     --password admin
 
 # Iniciar os serviços do Airflow
-export AIRFLOW_HOME="/home/marianela/Documentos/BulkConsulting/Cursos/3-Engenharia-de-dados/3-Apache-Airflow/lakehouse-airflow"
+export AIRFLOW_HOME="/home/marianela/Documentos/BulkConsulting/Cursos/3-Engenharia-de-dados/3-Apache-Airflow/lakehouse-airflow/"
 airflow webserver --port 8080
 airflow scheduler
 
