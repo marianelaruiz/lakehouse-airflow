@@ -1,3 +1,4 @@
+import os
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from datetime import datetime
@@ -11,10 +12,11 @@ with DAG(
     tags=["lakehouse"],
 ) as dag:
     
-    PYSPARK_PATH = "/home/marianela/Documentos/BulkConsulting/Cursos/3-Engenharia-de-dados/3-Apache-Airflow/lakehouse-airflow/pyspark"
-    
-    # Bronze layer
+    # PYSPARK_PATH = "/home/marianela/Documentos/BulkConsulting/Cursos/3-Engenharia-de-dados/3-Apache-Airflow/lakehouse-airflow/pyspark"
+    AIRFLOW_HOME = os.getenv("AIRFLOW_HOME")
+    PYSPARK_PATH = f"{os.path.dirname(AIRFLOW_HOME)}/pyspark"
 
+    # Bronze layer
     bronze_customers = BashOperator(
         task_id="bronze_customers",
         bash_command=f"spark-submit {PYSPARK_PATH}/bronze/bronze_customers.py"
