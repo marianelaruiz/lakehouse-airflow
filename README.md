@@ -67,7 +67,14 @@ source airflow_venv/bin/activate
        --email admin@example.com
    ```
 
-2. **Start Airflow** *(alternative option)*:
+   ```   
+   In a terminal: airflow webserver --port 8080
+   In another terminal: airflow scheduler
+   ```
+
+
+
+2. **Start Airflow** :
    For a quicker setup without creating a user, you can use the standalone mode:
    ```bash
    cd airflow
