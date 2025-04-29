@@ -74,8 +74,16 @@ Yo have two options:
    In a terminal: airflow webserver --port 8080
    In another terminal: airflow scheduler
    ```
-
-
+   
+   In a terminal:
+   ```    
+   airflow webserver --port 8080
+    airflow scheduler
+   ```
+   In another terminal:
+   ```    
+   airflow scheduler
+   ```
 
 2. **Start Airflow** :
    For a quicker setup without creating a user, you can use the standalone mode:
