@@ -1,3 +1,4 @@
+import os
 from pyspark.sql import SparkSession
 
 def revome_prefix_from_columns(df, prefix):
@@ -10,11 +11,13 @@ def revome_prefix_from_columns(df, prefix):
 spark = SparkSession.builder.appName("SilverOrders").getOrCreate()
 
 # Input PARQUET path
-AIRFLOW_HOME = "/home/marianela/Documentos/BulkConsulting/Cursos/3-Engenharia-de-dados/3-Apache-Airflow/lakehouse-airflow"
-input_path = f"{AIRFLOW_HOME}/lakehouse/bronze/orders.parquet"
+AIRFLOW_HOME = os.getenv("AIRFLOW_HOME")
+PROJECT_PATH = os.path.dirname(AIRFLOW_HOME)
+
+input_path = f"{PROJECT_PATH}/lakehouse/bronze/orders.parquet"
 
 # Exit route in Parquet format
-output_path = f"{AIRFLOW_HOME}/lakehouse/silver/orders.parquet"
+output_path = f"{PROJECT_PATH}/lakehouse/silver/orders.parquet"
 
 # Read parquet
 df = spark.read.parquet(input_path)

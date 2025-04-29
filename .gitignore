@@ -52,7 +52,6 @@ lakehouse/gold/
 *.orc
 *.avro
 *.csv
-*.json
 *.out
 
 # ----------------------------------------

@@ -1,3 +1,4 @@
+import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import countDistinct, count, sum as _sum
 
@@ -6,13 +7,13 @@ from pyspark.sql.functions import countDistinct, count, sum as _sum
 spark = SparkSession.builder.appName("GoldLayer").getOrCreate()
 
 # Input PARQUET path
-AIRFLOW_HOME = "/home/marianela/Documentos/BulkConsulting/Cursos/3-Engenharia-de-dados/3-Apache-Airflow/lakehouse-airflow"
-
+AIRFLOW_HOME = os.getenv("AIRFLOW_HOME")
+PROJECT_PATH = os.path.dirname(AIRFLOW_HOME)
 
 # Read data from the Silver layer
-customers = spark.read.parquet(f"{AIRFLOW_HOME}/lakehouse/silver/customers.parquet")
-orders = spark.read.parquet(f"{AIRFLOW_HOME}/lakehouse/silver/orders.parquet")
-order_item = spark.read.parquet(f"{AIRFLOW_HOME}/lakehouse/silver/order_item.parquet")
+customers = spark.read.parquet(f"{PROJECT_PATH}/lakehouse/silver/customers.parquet")
+orders = spark.read.parquet(f"{PROJECT_PATH}/lakehouse/silver/orders.parquet")
+order_item = spark.read.parquet(f"{PROJECT_PATH}/lakehouse/silver/order_item.parquet")
 
 # Join customers with orders
 orders_with_customers = orders.join(customers, orders.customer_id == customers.id).select(
@@ -43,7 +44,7 @@ summary = full_data.groupBy("city", "state") \
     )
 
 # Save result in Parquet
-summary.write.mode("overwrite").parquet(f"{AIRFLOW_HOME}/lakehouse/gold/summary_orders.parquet")
+summary.write.mode("overwrite").parquet(f"{PROJECT_PATH}/lakehouse/gold/summary_orders.parquet")
 
 # Show ten rows
 summary.show(10, truncate=False)

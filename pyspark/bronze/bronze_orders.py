@@ -1,3 +1,4 @@
+import os
 from pyspark.sql import SparkSession
 
 # Create sparkSession
@@ -6,11 +7,13 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Input JSON path
-AIRFLOW_HOME="/home/marianela/Documentos/BulkConsulting/Cursos/3-Engenharia-de-dados/3-Apache-Airflow/lakehouse-airflow"
-input_path = f"{AIRFLOW_HOME}/lakehouse/landing/orders.json"
+AIRFLOW_HOME = os.getenv("AIRFLOW_HOME")
+PROJECT_PATH = os.path.dirname(AIRFLOW_HOME)
+
+input_path = f"{PROJECT_PATH}/lakehouse/landing/orders.json"
 
 # Exit route in Parquet format
-output_path = f"{AIRFLOW_HOME}/lakehouse/bronze/orders.parquet"
+output_path = f"{PROJECT_PATH}/lakehouse/bronze/orders.parquet"
 
 # read JSON
 df = spark.read.json(input_path)

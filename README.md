@@ -33,10 +33,8 @@ $ cd lakehouse-airflow
 $ python -m venv airflow_venv 
 
 # Activate your virtual environment
-$ airflow_venv\Scripts\activate 
+$ airflow_venv\Scripts\activate
 
-# Install requirements
-$ pip install -r requirements.txt
 
 ```
 
@@ -49,20 +47,16 @@ python3 -m venv airflow_venv # or virtualenv venv
 # Activate your virtual environment
 source airflow_venv/bin/activate
 
-# Install requirements
-$ pip install -r requirements.txt
-
 ```
+### Initial Setup and Initialize Airflow
+   ```bash
+  bash setup_airflow.sh
+   ```
 
 ### Config and Run Apache Airflow
 *Ensure that Apache Airflow is installed on your machine.*
 
-1. **Initialize Airflow**:
-   ```bash
-   airflow db init
-   ```
-
-2. **Create an Airflow User** *(optional)*:
+1. **Create an Airflow User** *(optional)*:
    If you prefer to create a custom user:
    ```bash
    airflow users create \
@@ -73,31 +67,17 @@ $ pip install -r requirements.txt
        --email admin@example.com
    ```
 
-3. **Start Airflow** *(alternative option)*:
+2. **Start Airflow** *(alternative option)*:
    For a quicker setup without creating a user, you can use the standalone mode:
    ```bash
+   cd airflow
+   export AIRFLOW_HOME=$(pwd)
    airflow standalone
    ```
    > This command starts both the Airflow webserver and scheduler, and automatically creates an admin user. The username and password will be displayed in the terminal.
 
 4. **Access the Airflow UI**:
    Open the browser and navigate to `http://localhost:8080` to access the Airflow UI.
-
-To ensure that Airflow recognizes the DAG developed for this project, you can follow these steps. However, remember that this is only a temporary transformation, so don’t forget to change the DAG path back to the original version.
-
-```bash
-# Open the terminal and go to the root path
-# Go to airflow folder
-$ cd airflow
-
-# Open airflow config file
-$ gedit airflow.cfg
-
-# Comment out the existing `dags_folder` setting and replace it with a new line specifying the path to the DAG folder for this repository.
-
-# dags_folder = /home/youruser/airflow/dags
-dags_folder = /home/your/path/to/this/repo/DataEngineeringStudies/dags
-```
 
 ### 3. Apache Airflow Webserver
 
