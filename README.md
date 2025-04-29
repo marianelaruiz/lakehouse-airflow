@@ -67,7 +67,9 @@ source airflow_venv/bin/activate
        --email admin@example.com
    ```
 
-   ```   
+   ``` 
+   cd airflow
+   export AIRFLOW_HOME=$(pwd)  
    In a terminal: airflow webserver --port 8080
    In another terminal: airflow scheduler
    ```
