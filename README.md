@@ -75,8 +75,7 @@ Yo have two options:
    
    In a terminal:
    ```    
-   airflow webserver --port 8080
-    airflow scheduler
+   airflow webserver --port 8080    
    ```
    In another terminal:
    ```    
