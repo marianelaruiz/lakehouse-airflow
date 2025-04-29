@@ -55,6 +55,7 @@ source airflow_venv/bin/activate
 
 ### Config and Run Apache Airflow
 *Ensure that Apache Airflow is installed on your machine.*
+Yo have two options:
 
 1. **Create an Airflow User** *(optional)*:
    If you prefer to create a custom user:
@@ -85,7 +86,7 @@ source airflow_venv/bin/activate
    ```
    > This command starts both the Airflow webserver and scheduler, and automatically creates an admin user. The username and password will be displayed in the terminal.
 
-4. **Access the Airflow UI**:
+**Access the Airflow UI**:
    Open the browser and navigate to `http://localhost:8080` to access the Airflow UI.
 
 ### 3. Apache Airflow Webserver
